@@ -32,11 +32,11 @@ export default function Home() {
 
   const Toast = () => (
     <div
-      className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-green-100 text-green-800 rounded-lg shadow-md transition-opacity duration-300 ${
+      className={`fixed top-4 p-4 bg-green-100 text-green-800 rounded-lg shadow-md transition-opacity duration-300 ${
         showToast ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      テキストがクリップボードにコピーされました！
+      <p className="text-sm">テキストがクリップボードにコピーされました！</p>
     </div>
   );
 
