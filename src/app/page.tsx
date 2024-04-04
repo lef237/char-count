@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 export default function Home() {
   const [text, setText] = useState("");
   const [showToast, setShowToast] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: {
+    target: {
+      value: SetStateAction<string>;
+      style: { height: string };
+      scrollHeight: number;
+    };
+  }) => {
     setText(e.target.value);
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
