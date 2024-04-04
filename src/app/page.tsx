@@ -3,7 +3,8 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -14,13 +15,24 @@ export default function Home() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(text).then(
       () => {
-        alert("テキストをクリップボードにコピーしました！");
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
       },
       (err) => {
         console.error("クリップボードへのコピーに失敗しました: ", err);
       }
     );
   };
+
+  const Toast = () => (
+    <div
+      className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-green-100 text-green-800 rounded-lg shadow-md transition-opacity duration-300 ${
+        showToast ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      テキストがクリップボードにコピーされました！
+    </div>
+  );
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -40,8 +52,17 @@ export default function Home() {
           Copy
         </button>
       </div>
-      <footer className="mt-6 text-center text-gray-500 text-sm">
-        Created by <a href="https://github.com/lef237" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">lef237</a>
+      <Toast />
+      <footer className="m-6 text-center text-gray-500 text-sm">
+        Created by{" "}
+        <a
+          href="https://github.com/lef237"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          lef237
+        </a>
       </footer>
     </div>
   );
