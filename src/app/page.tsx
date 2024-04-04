@@ -7,6 +7,8 @@ export default function Home() {
 
   const handleChange = (e) => {
     setText(e.target.value);
+    e.target.style.height = "auto";
+    e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
   const copyToClipboard = () => {
@@ -28,7 +30,7 @@ export default function Home() {
           value={text}
           onChange={handleChange}
           placeholder="テキストを入力してください..."
-          className="w-full h-40 p-3 mb-4 text-gray-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full min-h-[120px] p-3 mb-4 text-gray-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
         <p className="text-lg text-gray-600">文字数: {text.length}</p>
         <button
