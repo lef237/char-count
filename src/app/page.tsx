@@ -14,8 +14,19 @@ export default function Home() {
     };
   }) => {
     setText(e.target.value);
+
+    // テキストエリアの高さを調整する前のスクロール位置を保存
+    const initialScrollTop =
+      window.scrollY || document.documentElement.scrollTop;
+
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
+
+    // テキストエリアの高さが変更された後、保存したスクロール位置に戻す
+    window.scrollTo({
+      top: initialScrollTop,
+      behavior: "auto",
+    });
   };
 
   const copyToClipboard = () => {
