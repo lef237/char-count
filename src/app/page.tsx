@@ -22,6 +22,11 @@ export default function Home() {
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
 
+    // スマートフォンの場合、スクロール位置を元に戻さない（カクカクするため）
+    if (/Mobi/i.test(navigator.userAgent)) {
+      return;
+    }
+
     // テキストエリアの高さが変更された後、保存したスクロール位置に戻す
     window.scrollTo({
       top: initialScrollTop,
