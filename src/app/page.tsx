@@ -43,7 +43,9 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-lg p-6 bg-white rounded-lg shadow-md relative">
-        <h1 className="text-3xl font-bold mb-6">文字数カウントアプリ</h1>
+        <h1 className="text-3xl font-bold mb-6 text-black">
+          文字数カウントアプリ
+        </h1>
         <textarea
           value={text}
           onChange={handleChange}
