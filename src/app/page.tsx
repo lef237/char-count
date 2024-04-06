@@ -1,6 +1,7 @@
 "use client";
 
 import { SetStateAction, useState } from "react";
+// @ts-expect-error 型定義が存在しない
 import { splitGraphemes } from "split-graphemes";
 
 export default function Home() {
