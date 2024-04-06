@@ -1,6 +1,7 @@
 "use client";
 
 import { SetStateAction, useState } from "react";
+import { splitGraphemes } from "split-graphemes";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -68,7 +69,9 @@ export default function Home() {
           placeholder="テキストを入力してください..."
           className="w-full min-h-[120px] p-3 mb-4 text-gray-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
-        <p className="text-lg text-gray-600">文字数: {text.length}</p>
+        <p className="text-lg text-gray-600">
+          文字数: {splitGraphemes(text).length}
+        </p>
         <button
           onClick={copyToClipboard}
           className="absolute bottom-4 right-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200"
